@@ -47,9 +47,9 @@ public function insertarEquipo($nombre,$ciudad,$conferencia,$division){
 }
 
 }
-public function devolverNuevaFila($nombre){
+public function devolverNuevaFila(){
   if($this->error==false){
-    $resultado = $this->conexion->query("SELECT nombre, ciudad, conferencia, division FROM equipos WHERE nombre='".$nombre."'");
+    $resultado = $this->conexion->query("SELECT Nombre, Procedencia FROM jugadores");
     return $resultado;
   }else{
     return null;

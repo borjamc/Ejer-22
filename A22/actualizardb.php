@@ -9,20 +9,33 @@
   //Incluir la clase de conexion
   include "dbUsuarios.php";
   $nba=new db();
-  //insertar un usuario
-  $resultadoActualizar=$nba->actualizarEquipo($_POST["nombre"],$_POST["ciudad"],$_POST["conferencia"],$_POST["division"]);
-  //Devolver el usuario actualizado
-  if($resultadoActualizar==true){
-    $resultado=$nba->devolverNuevaFila($_POST["nombre"]);
-    $fila=$resultado->fetch_assoc();
-    echo "Nombre: ".$fila["nombre"]."</br>";
-    echo "Ciudad: ".$fila["ciudad"]."</br>";
-    echo "Conferencia: ".$fila["conferencia"]."</br>";
-    echo "Division: ".$fila["division"]."</br>";
-    echo "<a href='actualizar.php?Nombre=".$fila["nombre"]."&Ciudad=".$fila["ciudad"]."&Conferencia=".$fila["conferencia"]."&Division=".$fila["division"]."'>Actualizar Registro</a></br>";
-  }else{
-    echo "Error en la actualizacion";
+
+  $lista=$nba->devolverNuevaFila();
+  ?>
+
+<table border="1">
+<?php
+  while($fila=$lista->fetch_assoc()){
+    ?>
+
+        <td>
+            <tr>
+          <?php
+
+    echo "Nombre: ".$fila["Nombre"]."</br>";
+    ?>
+  </tr>
+        <tr>
+    <?php
+    echo "Procedencia: ".$fila["Procedencia"]."</br>";
+    ?>
+  <tr>
+
+</td>
+
+<?php
   }
   ?>
+</table>
   </body>
 </html>
