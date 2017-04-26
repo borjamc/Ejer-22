@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Periodico local de los lakers</title>
+	<link rel="stylesheet" type="text/css" href="/estilos.css">
+</head>
+<body>
+<table class="menu">
+	<tr>
+		<td>LOGO</td>	
+		<td><a href="resultado.html">RESULTADO</a></td>
+		<td><a href="#">JUGADORES</a></td>
+	</tr>
+</table>
+
+<?php 
+		$conexion = new mysqli ("localhost", "root", "", "nba");
+if ($conexion->connect_errno) {
+    echo "Fallo al conectar a MySQL: (" . $conexion->connect_errno . ") " . $conexion->connect_error;
+}else{
+	echo "Conexion realizada";
+}
+	?>	
+</body>
+</html>

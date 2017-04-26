@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Resultado</title>
+</head>
+<body>
+<?php 
+
+$conexion = new mysqli("localhost", "root", "", "nba");
+if ($conexion->connect_errno) {
+    echo "Fallo al conectar a MySQL: (" . $conexion->connect_errno . ") " . $conexion->connect_error;
+}else{
+ ?>
+
+<?php 
+$resultado=$conexion->query("SELECT jugador,Puntos_por_partido FROM estadisticas ORDER BY Puntos_por_partido DESC LIMIT 1;");
+
+while ($fila=$resultado->fetch_assoc()){
+
+echo "Codigo Jugador: " . $fila["jugador"] . "<br>" . " Puntuación máxima: " . $fila["Puntos_por_partido"];
+}
+?>
+</td>
+</tr>
+<tr>
+<td>
+<?php
+$resultado=$conexion->query("SELECT jugador,Asistencias_por_partido FROM estadisticas ORDER BY Puntos_por_partido DESC LIMIT 1;");
+
+while ($fila=$resultado->fetch_assoc()){
+
+echo "Codigo Jugador: " . $fila["jugador"] . "<br>" . " Asistencias por partido: " . $fila["Asistencias_por_partido"];
+
+}
+}
+ ?>
+</body>
+</html>
